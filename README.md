@@ -1,2 +1,2 @@
-C1 Secret
-=========
+Batch Normalization
+===========
