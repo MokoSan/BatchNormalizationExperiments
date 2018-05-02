@@ -6,7 +6,7 @@ class EarlyStoppingMetric(Callback):
     monitor: metric to track during training
     
     
-    example: In Batch Normalization (https://arxiv.org/pdf/1502.03167.pdf)
+    WHY:     In Batch Normalization (https://arxiv.org/pdf/1502.03167.pdf)
              the training is studied by stopping training for each model 
              when a validaition accuracy of 72.2% is achieved. The number of
              steps to achieve this accuracy is studied for multiple variants
