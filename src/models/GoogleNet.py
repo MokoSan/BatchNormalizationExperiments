@@ -1,7 +1,8 @@
-from tensorflow.python.keras.layers import Input, Dense, Convolution2D, MaxPooling2D, AveragePooling2D, ZeroPadding2D, Dropout, Flatten, Concatenate, Reshape, Activation, BatchNormalization
+from tensorflow.python.keras.layers import Input, Dense, Convolution2D, MaxPooling2D
+from tensorflow.python.keras.layers import AveragePooling2D, ZeroPadding2D, Dropout, Flatten, 
+from tensorflow.python.keras.layers import Concatenate, Reshape, Activation, BatchNormalization
 from tensorflow.python.keras.models import Model
 from layers import PoolHelper, LRN
-
 
 def conv2d_bn(x,
               filters,
