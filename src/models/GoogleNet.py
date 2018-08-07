@@ -92,13 +92,13 @@ def GoogleNet(input_shape=(224, 224, 3), activation='relu'):
 
     pool1_3x3_s2 = MaxPooling2D(pool_size=(3, 3), strides=(2, 2), padding='valid', name='pool1/3x3_s2')(pool1_helper)
 
-    pool1_norm1 = LRN(name='pool1/norm1', batch_size=32)(pool1_3x3_s2)
+    pool1_norm1 = LRN(name='pool1/norm1')(pool1_3x3_s2, batch_size=32)
 
     conv2_3x3_reduce = Convolution2D(64, (1, 1), padding='same', activation=activation, name='conv2/3x3_reduce')(pool1_norm1)
 
     conv2_3x3 = Convolution2D(192, (3, 3), padding='same', activation=activation, name='conv2/3x3')(conv2_3x3_reduce)
 
-    conv2_norm2 = LRN(name='conv2/norm2')(conv2_3x3)
+    conv2_norm2 = LRN(name='conv2/norm2')(conv2_3x3, batch_size=32)
 
     conv2_zero_pad = ZeroPadding2D(padding=(1, 1))(conv2_norm2)
 
@@ -110,13 +110,6 @@ def GoogleNet(input_shape=(224, 224, 3), activation='relu'):
 
     inception_3a_output = Inception_Module(name='3a',
                                            pooled_input=pool2_3x3_s2,
-                                           filters=filters_3a,
-                                           activation=activation)
-
-    filters_3a = {'1x1': 64, '3x3_reduce': 96, '3x3': 128, '5x5_reduce': 16, '5x5': 32, 'pool_proj': 32}
-
-    inception_3a_output = Inception_Module(name='3a',
-                                           pooled_input=inception_3a_output,
                                            filters=filters_3a,
                                            activation=activation)
 
